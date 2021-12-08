@@ -114,7 +114,7 @@ void addToTp(proc *tp, char *name, long unsigned int n, int j) {
                 printf("ALLOCATED %s %ld\n", tp[0].name, tp[0].start);
                 return;
         }
-        for (int i = (sizeof(tp) - 2); i > j; --i) {
+        for (int i = (sizeof(tp) - 2); i >= j; --i) {
                 if ((tp[i].name[0] != '\0') && (tp[i+1].name[0] == '\0')) {
                         strcpy(tp[i+1].name, tp[i].name);
                         tp[i+1].n = tp[i].n;
@@ -125,13 +125,16 @@ void addToTp(proc *tp, char *name, long unsigned int n, int j) {
                 }
         }
         long unsigned int st = 0;
-        strcpy(tp[j+1].name, name);
-        tp[j+1].n = n;
-        for (int i = 0; i < (j+1); ++i) {
-                st += tp[i].n;
+        strcpy(tp[j].name, name);
+        tp[j].n = n;
+        if (j == 0) {
+                st = 0;
         }
-        tp[j+1].start = st;
-        printf("ALLOCATED %s %ld\n", tp[j+1].name, tp[j+1].start);
+        else {
+                st = tp[j-1].start + tp[j-1].n;
+        }
+        tp[j].start = st;
+        printf("ALLOCATED %s %ld\n", tp[j].name, tp[j].start);
         return;
 }
 
@@ -143,9 +146,7 @@ tot) {
         if (isEmpty(tp) == 0) {
                 return j;
         }
-        if (tp[0].start > 0) {
-                bestdiff = tp[0].start;
-        }
+        bestDiff = tp[0].start;
         for (int i = 0; i < sizeof(tp); ++i) {
                 if ((tp[i].name[0] != '\0') && (tp[i+1].name[0] != '\0')) {
                         diff = tp[i+1].start - tp[i].n;
