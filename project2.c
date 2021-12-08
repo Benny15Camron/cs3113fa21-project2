@@ -375,8 +375,7 @@ void firstfit(char** argv, long unsigned int tot) {
                 }
                 }
 }
-int findNextFit(proc *tp, char *name, char *prevName, long unsigned int n, long unsigned in
-t tot) {
+int findNextFit(proc *tp, char *name, char *prevName, long unsigned int n, long unsigned int tot) {
         int pos;
         for (int i = 0; i < sizeof(tp); ++i) {
                 if (strcmp(prevName, tp[i].name) == 0) {
