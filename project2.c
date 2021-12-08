@@ -152,18 +152,18 @@ tot) {
                         diff = tp[i+1].start - tp[i].n;
                         if ((n < diff) && (bestDiff == 0)){
                                 bestDiff = diff;
-                                j = i;
+                                j = i+1;
                         }
                         else if ((n < diff) && (bestDiff > diff)){
                                 bestDiff = diff;
-                                j = i;
+                                j = i+1;
                         }
                 }
                 else if ((tp[i].name[0] != '\0') && (tp[i+1].name[0] == '\0')) {
                         diff = tot - allocated(tp);
                         if ((bestDiff == 0) || (diff < bestDiff)) {
                                 bestDiff = diff;
-                                j = i;
+                                j = i+1;
                         }
                 }
         }
