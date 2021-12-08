@@ -48,13 +48,13 @@ void available(proc *tp, long unsigned int tot) {
                         av =  tp[i+1].start - (tp[i].start + tp[i].n);
                         if (av != 0){
                                 st = tp[i].start + tp[i].n;
-                                printf("(%lu,%lu)", av, st);
+                                printf("(%lu, %lu)", av, st);
                         }
                   }
                 else if (remainder != 0) {
                         remainder = tot - (tp[i].start + tp[i].n);
                         av = tp[i].start + tp[i].n;
-                        printf("(%lu,%lu)\n", remainder, av);
+                        printf("(%lu, %lu)\n", remainder, av);
                         break;
                 }
                 av = 0;
@@ -68,7 +68,7 @@ void assigned(proc *tp) {
         }
         for (int i = 0; i < sizeof(tp); ++i) {
                 if (tp[i].name[0] != '\0') {
-                        printf("(%s,%lu,%lu)", tp[i].name, tp[i].n, tp[i].start);
+                        printf("(%s, %lu, %lu)", tp[i].name, tp[i].n, tp[i].start);
                 }
         }
         printf("\n");
