@@ -68,7 +68,7 @@ void assigned(proc *tp) {
         }
         for (int i = 0; i < sizeof(tp); ++i) {
                 if (tp[i].name[0] != '\0') {
-                        printf("(%s, %lu, %lu)", tp[i].name, tp[i].n, tp[i].start);
+                        printf("(%s, %lu, %lu) ", tp[i].name, tp[i].n, tp[i].start);
                 }
         }
         printf("\n");
