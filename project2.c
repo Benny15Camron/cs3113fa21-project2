@@ -353,12 +353,9 @@ int findFirstFit(proc *tp, char *name, long unsigned int n, long unsigned int to
                          return (i + 1);
                         }
                 }
-                else {
+                else if (tp[i].name[0] != '\0') {
                         diff = tot - (tp[i].start + tp[i].n);
                         if (diff >= n) {
-                               if (strcmp(name, "O") == 0) {
-                                     printf("tot %lu, size %lu, ind %d, name %s\n",tot, tp[i].n, i, tp[i].name);
-                               }
                                return (i + 1);
                         }
                 }
