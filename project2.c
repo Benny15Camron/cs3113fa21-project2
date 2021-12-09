@@ -477,6 +477,7 @@ void nextfit(char** argv, long unsigned int tot) {
                                         pointer = j;
                                         addToTp(tp, name, n, j);
                                 }
+                        }
                 }
                 else if (strcmp(job, rlease) == 0) {
                         fscanf(fd, "%s", name);
