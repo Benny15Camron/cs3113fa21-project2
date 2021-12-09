@@ -474,10 +474,9 @@ void nextfit(char** argv, long unsigned int tot) {
                                         addToTp(tp, name, n, j);
                                 }
                                 else {
-                                
                                         pointer = j;
-                                        printf("pointer %d\n", pointer);
                                         addToTp(tp, name, n, j);
+                                        printf("pointer %d\n", pointer);
                                 }
                         }
                 }
