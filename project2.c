@@ -45,6 +45,9 @@ void available(proc *tp, long unsigned int tot) {
                   }
                 else if (remainder != 0) {
                         remainder = tot - (tp[i].start + tp[i].n);
+                        if (remainder == 0) {
+                                break;
+                        }
                         av = tp[i].start + tp[i].n;
                         printf("(%lu, %lu)\n", remainder, av);
                         break;
