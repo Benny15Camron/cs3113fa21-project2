@@ -465,6 +465,7 @@ void nextfit(char** argv, long unsigned int tot) {
                 if (strcmp(job, request) == 0) {
                         fscanf(fd, "%s", name);
                         fscanf(fd, "%lu", &n);
+                        printf("pointer %d\n", pointer);
                         j = findNextFit(tp, name, pointer, n, tot);
                         if (j == -1){
                                         printf("FAIL REQUEST %s %ld\n", name, n);
@@ -476,7 +477,6 @@ void nextfit(char** argv, long unsigned int tot) {
                                 else {
                                         pointer = j;
                                         addToTp(tp, name, n, j);
-                                        printf("pointer %d\n", pointer);
                                 }
                         }
                 }
