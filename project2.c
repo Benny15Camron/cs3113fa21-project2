@@ -206,7 +206,7 @@ void bestfit(char** argv, long unsigned int tot) {
         long unsigned int j;
         long unsigned int n;
         FILE *fd;
-        proc tp[1000];
+        proc tp[20];
         for (int i = 0; i < 20; ++i){
                 tp[i].name[0] = '\0';
                 tp[i].n = 0;
