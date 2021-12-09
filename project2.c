@@ -194,7 +194,6 @@ void bestfit(char** argv, long unsigned int tot) {
         }
         fd = fopen(argv[3], "r");
         while (fscanf(fd, "%s", job) != EOF) {
-                printf("bologna\n");
                 if (strcmp(job, request) == 0) {
                         fscanf(fd, "%s", name);
                         fscanf(fd, "%lu", &n);
