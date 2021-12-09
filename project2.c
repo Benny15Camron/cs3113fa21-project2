@@ -130,11 +130,13 @@ void addToTp(proc *tp, char *name, long unsigned int n, int j) {
         return;
 }
 
-long unsigned int findBestFit(proc *tp, char *name, long unsigned int n, long unsigned int 
-tot) {
+long unsigned int findBestFit(proc *tp, char *name, long unsigned int n, long unsigned int tot) {
         int j = 0;
         long unsigned int diff = 0;
         long unsigned int bestDiff = 0;
+        if (n < tot) {
+                return -1;
+        }
         if (isEmpty(tp) == 0) {
                 return j;
         }
@@ -161,7 +163,7 @@ tot) {
         }
         if (bestDiff == 0) {
                 return -1;
-                }
+        }
         return j;
 }
 void bestfit(char** argv, long unsigned int tot) {
