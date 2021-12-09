@@ -105,11 +105,11 @@ void find(proc *tp, char *name) {
 int release(proc *tp, char *name) {
         for (int i = 0; i < allocated(tp); ++i) {
                 if (strcmp(tp[i].name, name) == 0) {
-                        printf("FREE vnbg %s %ld %ld\n", tp[i].name, tp[i].n, tp[i].start);
+                        printf("FREE %s %ld %ld\n", tp[i].name, tp[i].n, tp[i].start);
                         tp[i].name[0] = '\0';
                         tp[i].n = 0;
                         tp[i].start = 0;
-                        for (int j = i; j < (sizeof(tp) - 2); ++j) {
+                        for (int j = i; j < (allocated(tp) +1); ++j) {
                                 strcpy(tp[j].name, tp[j+1].name);
                                 tp[j].n = tp[j+1].n;
                                 tp[j].start = tp[j+1].start;
@@ -152,9 +152,6 @@ void addToTp(proc *tp, char *name, long unsigned int n, int j) {
                 st = tp[j-1].start + tp[j-1].n;
         }
         tp[j].start = st;
-        if (strcmp(tp[j].name, "S") == 0){
-                printf("ALLOCATED lskjdf %s %ld\n", tp[j].name, tp[j].start);
-        }
         printf("ALLOCATED %s %ld\n", tp[j].name, tp[j].start);
         return;
 }
