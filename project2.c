@@ -58,7 +58,7 @@ void available(proc *tp, long unsigned int tot) {
                 }
                 av = 0;
         }
-        
+        printf("here\n");
         return;
 }
 void assigned(proc *tp) {
