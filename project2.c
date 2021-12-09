@@ -465,19 +465,14 @@ void nextfit(char** argv, long unsigned int tot) {
                 if (strcmp(job, request) == 0) {
                         fscanf(fd, "%s", name);
                         fscanf(fd, "%lu", &n);
-                        if (isEmpty(tp) == 0){
-                                addToTp(tp, name, n, 0);
+                        j = findNextFit(tp, name, pointer, n, tot);
+                        if (j == -1){
+                                        printf("FAIL REQUEST %s %ld\n", name, n);
                         }
                         else {
-                                j = findNextFit(tp, name, pointer, n, tot);
-                                if (j == -1){
-                                        printf("FAIL REQUEST %s %ld\n", name, n);
-                                }
-                                else {
-                                        pointer = j;
-                                        printf("pointer %d\n", pointer);
-                                        addToTp(tp, name, n, j);
-                                }
+                                pointer = j;
+                                printf("pointer %d\n", pointer);
+                                addToTp(tp, name, n, j);
                         }
                 }
                 else if (strcmp(job, rlease) == 0) {
