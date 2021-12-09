@@ -473,8 +473,9 @@ void nextfit(char** argv, long unsigned int tot) {
                                 if (j == -1){
                                         printf("FAIL REQUEST %s %ld\n", name, n);
                                 }
-                                pointer = j;
-                                addToTp(tp, name, n, j);
+                                else {
+                                        pointer = j;
+                                        addToTp(tp, name, n, j);
                                 }
                 }
                 else if (strcmp(job, rlease) == 0) {
@@ -483,7 +484,9 @@ void nextfit(char** argv, long unsigned int tot) {
                         if (j == -1){
                                 printf("FAIL RELEASE %s\n", name);
                         }
-                        pointer = j;
+                        else {
+                                pointer = j;
+                        }
                 }
                 else if (strcmp(job, list) == 0) {
                         fscanf(fd, "%s", job);
