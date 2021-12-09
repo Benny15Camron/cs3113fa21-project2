@@ -58,7 +58,7 @@ void available(proc *tp, long unsigned int tot) {
                 }
                 av = 0;
         }
-        printf("%lu\n", tp[sizeof(tp)].n);
+        printf("%lu, %lu\n", tp[sizeof(tp)].n, tp[sizeof(tp)].start);
         return;
 }
 void assigned(proc *tp) {
