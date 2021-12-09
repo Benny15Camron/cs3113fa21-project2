@@ -470,9 +470,15 @@ void nextfit(char** argv, long unsigned int tot) {
                                         printf("FAIL REQUEST %s %ld\n", name, n);
                         }
                         else {
-                                pointer = j - 1;
-                                printf("pointer %d\n", pointer);
-                                addToTp(tp, name, n, j);
+                                if (isEmpty(tp) == 0) {
+                                        addToTP(tp, name, n, j);
+                                }
+                                else {
+                                
+                                        pointer = j - 1;
+                                        printf("pointer %d\n", pointer);
+                                        addToTp(tp, name, n, j);
+                                }
                         }
                 }
                 else if (strcmp(job, rlease) == 0) {
