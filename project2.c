@@ -422,9 +422,6 @@ int findNextFit(proc *tp, char *name, int pos, long unsigned int n, long unsigne
                 return 0;
         }
         long unsigned int diff = tp[0].start;
-        if ((diff >= n) && (pos == 0)) {
-                return 0;
-        }
         
         for (int i = pos; i < allocated(tp) + 4; ++i) {
                 if (tp[i+1].name[0] != '\0'){
