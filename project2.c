@@ -466,7 +466,7 @@ int main (int argc, char** argv) {
         N =  atoi(argv[2]);
         proc *alloc;
         alloc = calloc(N, sizeof(proc));
-        free(alloc);
+        
         if (strcmp(fit, bf) == 0) {
                 bestfit(argv, N);
         }
@@ -479,5 +479,7 @@ int main (int argc, char** argv) {
         else if (strcmp(fit, nf) == 0) {
                 nextfit(argv, N);
         }
+        
+        free(alloc);
         return 0;
 }
