@@ -35,6 +35,9 @@ void available(proc *tp, long unsigned int tot) {
                 printf("FULL\n");
                 return;
         }
+        if (tp[0].start != 0) {
+                printf("(%lu, 0) ", tp[0].start);
+        }
         for  (int i = 0; i < (sizeof(tp) - 2); ++i) {
                 if (tp[i+1].name[0] != '\0'){
                         av =  tp[i+1].start - (tp[i].start + tp[i].n);
