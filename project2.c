@@ -19,6 +19,19 @@ int isEmpty(proc *tp) {
         return 0;
 }
 
+int allocated(proc *tp) {
+        int total = 0;
+        for (int i = 0; i < 1000; ++i) {
+                if (tp[i].name[0] != '\0') {
+                        ++total;
+                }
+                else {
+                        break;
+                }
+        }
+        return total;
+}
+
 void available(proc *tp, long unsigned int tot) {
         long unsigned int av = 0;
         long unsigned int remainder = 0;
@@ -27,7 +40,7 @@ void available(proc *tp, long unsigned int tot) {
                 printf("(%lu, 0)\n", tot);
                 return;
         }
-        for (int i = 0; i < sizeof(tp); ++i) {
+        for (int i = 0; i < allocated(tp); ++i) {
                 remainder += tp[i].n;
         }
         
@@ -38,7 +51,7 @@ void available(proc *tp, long unsigned int tot) {
         if (tp[0].start != 0) {
                 printf("(%lu, 0) ", tp[0].start);
         }
-        for  (int i = 0; i < 1000; ++i) {
+        for  (int i = 0; i < allocated(tp); ++i) {
                 if (tp[i+1].name[0] != '\0'){
                         av =  tp[i+1].start - (tp[i].start + tp[i].n);
                         if (av != 0){
@@ -65,7 +78,7 @@ void assigned(proc *tp) {
                 printf("NONE\n");
                 return;
         }
-        for (int i = 0; i < 1000; ++i) {
+        for (int i = 0; i < allocated(tp); ++i) {
                 if (tp[i].name[0] != '\0') {
                         printf("(%s, %lu, %lu) ", tp[i].name, tp[i].n, tp[i].start);
                 }
@@ -77,7 +90,7 @@ void assigned(proc *tp) {
         return;
 }
 void find(proc *tp, char *name) {
-        for (int i = 0; i < 1000; ++i) {
+        for (int i = 0; i < allocated(tp); ++i) {
                 if (strcmp(tp[i].name, name) == 0) {
                        printf("(%s, %lu, %lu)\n", tp[i].name, tp[i].n, tp[i].start);
                        return;
@@ -90,7 +103,7 @@ void find(proc *tp, char *name) {
         return;
 }
 int release(proc *tp, char *name) {
-        for (int i = 0; i < 1000; ++i) {
+        for (int i = 0; i < allocated(tp); ++i) {
                 if (strcmp(tp[i].name, name) == 0) {
                         printf("FREE %s %ld %ld\n", tp[i].name, tp[i].n, tp[i].start);
                         tp[i].name[0] = '\0';
@@ -122,7 +135,7 @@ void addToTp(proc *tp, char *name, long unsigned int n, int j) {
                 printf("ALLOCATED %s %ld\n", tp[0].name, tp[0].start);
                 return;
         }
-        for (int i = 1000; i >= j; --i) {
+        for (int i = allocated(tp); i >= j; --i) {
                 if ((tp[i].name[0] != '\0') && (tp[i+1].name[0] == '\0')) {
                         strcpy(tp[i+1].name, tp[i].name);
                         tp[i+1].n = tp[i].n;
@@ -157,7 +170,7 @@ long unsigned int findBestFit(proc *tp, char *name, long unsigned int n, long un
                 return j;
         }
         bestDiff = tp[0].start;
-        for (int i = 0; i < 1000; ++i) {
+        for (int i = 0; i < allocated(tp); ++i) {
                 if (tp[i].name[0] == '\0') {
                         break;
                 }
