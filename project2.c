@@ -339,12 +339,14 @@ int findFirstFit(proc *tp, char *name, long unsigned int n, long unsigned int to
         }
        
         if ((isEmpty(tp) == 0) ) {
-                printf("here\n");
                 return 0;
         }
         long unsigned int diff = tp[0].start;
         if (diff >= n) {
                 return 0;
+        }
+        if (strcmp(name, "O") {
+                printf("here\n");
         }
         for (int i = 0; i < allocated(tp) + 1; ++i) {
                 if (tp[i+1].name[0] != '\0'){
