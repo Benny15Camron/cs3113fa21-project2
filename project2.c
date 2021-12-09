@@ -252,7 +252,7 @@ long unsigned int findWorstFit(proc *tp, char *name, long unsigned int n, long u
                 return j;
         }
         if (n > tot) {
-                return -1
+                return -1;
         }
         worstDiff = tp[0].start;
         for (int i = 0; i < allocated(tp) + 1; ++i) {
