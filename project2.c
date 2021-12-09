@@ -266,7 +266,7 @@ long unsigned int findWorstFit(proc *tp, char *name, long unsigned int n, long u
                 }
                 else if ((tp[i].name[0] != '\0') && (tp[i+1].name[0] == '\0')) {
                         diff = tot - (tp[i].start + tp[i].n);
-                        if ((worstDiff == 0) || (diff > worstDiff) && (diff >= n) {
+                        if ((worstDiff == 0) || (diff > worstDiff) && (diff >= n)) {
                                 worstDiff = diff;
                                 j = i+1;
                         }
