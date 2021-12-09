@@ -470,7 +470,7 @@ void nextfit(char** argv, long unsigned int tot) {
                                         printf("FAIL REQUEST %s %ld\n", name, n);
                         }
                         else {
-                                pointer = j;
+                                pointer = j - 1;
                                 printf("pointer %d\n", pointer);
                                 addToTp(tp, name, n, j);
                         }
