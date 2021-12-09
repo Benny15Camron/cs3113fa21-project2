@@ -252,6 +252,7 @@ long unsigned int findWorstFit(proc *tp, char *name, long unsigned int n, long u
                 return j;
         }
         if (n > tot) {
+                printf("here\n");
                 return -1;
         }
         worstDiff = tp[0].start;
