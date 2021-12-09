@@ -338,7 +338,7 @@ int findFirstFit(proc *tp, char *name, long unsigned int n, long unsigned int to
                 return -1;
         }
        
-        if ((isEmpty(tp) == 0) ) {
+        if (isEmpty(tp) == 0) {
                 return 0;
         }
         long unsigned int diff = tp[0].start;
@@ -413,22 +413,30 @@ void firstfit(char** argv, long unsigned int tot) {
                 }
                 }
 }
-int findNextFit(proc *tp, char *name, char *prevName, long unsigned int n, long unsigned int tot) {
-        int pos;
-        for (int i = 0; i < sizeof(tp); ++i) {
-                if (strcmp(prevName, tp[i].name) == 0) {
-                        pos = i;
-                }
+
+int findNextFit(proc *tp, char *name, int pos, long unsigned int n, long unsigned int tot) {
+        if (n > tot) {
+                return -1;
         }
-        for (int i = pos; i < sizeof(tp); ++i) {
-                if (tp[i+1].name[0] != '\0') {
-                        if ((tp[i+1].start - (tp[i].start + tp[i].n)) > n) {
-                                return i;
+        if (isEmpty(tp) == 0) {
+                return 0;
+        }
+        long unsigned int diff = tp[0].start;
+        if (diff >= n) {
+                return 0;
+        }
+
+        for (int i = pos; i < allocated(tp) + 1; ++i) {
+                if (tp[i+1].name[0] != '\0'){
+                        diff = tp[i+1].start - (tp[i].start + tp[i].n);
+                        if (diff >= n){
+                         return (i + 1);
                         }
                 }
-                else {
-                        if ((tot - (tp[i].start + tp[i].n)) > n){
-                                return i;
+                else if (tp[i].name[0] != '\0') {
+                        diff = tot - (tp[i].start + tp[i].n);
+                        if (diff >= n) {
+                               return (i + 1);
                         }
                 }
         }
@@ -438,13 +446,13 @@ int findNextFit(proc *tp, char *name, char *prevName, long unsigned int n, long 
 void nextfit(char** argv, long unsigned int tot) {
         char job[10];
         char name[5];
-        char prevName[5];
         char request[8] = {'R','E','Q','U','E','S','T','\0'};
         char rlease[8] = {'R','E','L','E','A','S','E','\0'};
         char list[5] = {'L','I','S','T','\0'};
         char av[10] = {'A','V','A','I','L','A','B','L','E','\0'};
         char as[9] = {'A','S','S','I','G','N','E','D','\0'};
         char f[5] = {'F','I','N','D','\0'};
+        int pointer = 0;
         long unsigned int j;
         long unsigned int n;
         FILE *fd;
@@ -461,20 +469,19 @@ void nextfit(char** argv, long unsigned int tot) {
                                 addToTp(tp, name, n, 0);
                         }
                         else {
-                                j = findNextFit(tp, name, prevName, n, tot);
+                                j = findNextFit(tp, name, pointer, n, tot);
                                 if (j == -1){
                                         printf("FAIL REQUEST %s %ld\n", name, n);
                                 }
+                                pointer = j;
                                 addToTp(tp, name, n, j);
                                 }
-                        strcpy(prevName,name);
                 }
                 else if (strcmp(job, rlease) == 0) {
                         fscanf(fd, "%s", name);
                         if (release(tp, name) == -1){
                                 printf("FAIL RELEASE %s\n", name);
                         }
-                        strcpy(prevName,name);
                 }
                 else if (strcmp(job, list) == 0) {
                         fscanf(fd, "%s", job);
