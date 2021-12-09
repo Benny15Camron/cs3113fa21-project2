@@ -149,7 +149,7 @@ tot) {
         bestDiff = tp[0].start;
         for (int i = 0; i < sizeof(tp); ++i) {
                 if ((tp[i].name[0] != '\0') && (tp[i+1].name[0] != '\0')) {
-                        diff = tp[i+1].start - tp[i].n;
+                        diff = tp[i+1].start - (tp[i].start + tp[i].n);
                         if ((n < diff) && (bestDiff == 0)){
                                 bestDiff = diff;
                                 j = i+1;
@@ -222,9 +222,8 @@ void bestfit(char** argv, long unsigned int tot) {
                 }
         }
 }
-long unsigned int findWorstFit(proc *tp, char *name, long unsigned int n, long unsigned int
- tot) {
- int j = 0;
+long unsigned int findWorstFit(proc *tp, char *name, long unsigned int n, long unsigned int tot) {
+        int j = 0;
         long unsigned int diff = 0;
         long unsigned int worstDiff = 0;
         if (isEmpty(tp) == 0) {
@@ -233,12 +232,12 @@ long unsigned int findWorstFit(proc *tp, char *name, long unsigned int n, long u
         worstDiff = tp[0].start;
         for (int i = 0; i < sizeof(tp); ++i) {
                 if ((tp[i].name[0] != '\0') && (tp[i+1].name[0] != '\0')) {
-                        diff = tp[i+1].start - tp[i].n;
-                        if ((n < diff) && (worstDiff == 0)){
+                        diff = tp[i+1].start - (tp[i].start + tp[i].n);
+                        if ((n > diff) && (worstDiff == 0)){
                                 worstDiff = diff;
                                 j = i+1;
                         }
-                        else if ((n < diff) && (worstDiff < diff)){
+                        else if ((n > diff) && (worstDiff < diff)){
                                 worstDiff = diff;
                                 j = i+1;
                         }
