@@ -194,6 +194,9 @@ void bestfit(char** argv, long unsigned int tot) {
                 if (strcmp(job, request) == 0) {
                         fscanf(fd, "%s", name);
                         fscanf(fd, "%lu", &n);
+                        if (tot == 128) {
+                                printf("%s %s %lu\n", job, name, n);
+                        }
                         j = findBestFit(tp, name, n, tot);
                         if (j == -1){
                                 printf("FAIL REQUEST %s %ld\n", name, n);
