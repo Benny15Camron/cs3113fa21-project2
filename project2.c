@@ -47,11 +47,11 @@ void available(proc *tp, long unsigned int tot) {
                         remainder = tot - (tp[i].start + tp[i].n);
                         if (remainder == 0) {
                                 printf("\n");
-                                break;
+                                return;
                         }
                         av = tp[i].start + tp[i].n;
                         printf("(%lu, %lu)\n", remainder, av);
-                        break;
+                        return;
                 }
                 av = 0;
         }
