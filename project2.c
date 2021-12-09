@@ -66,7 +66,7 @@ void assigned(proc *tp) {
                 printf("NONE\n");
                 return;
         }
-        for (int i = 0; i < sizeof(tp); ++i) {
+        for (int i = 0; i < 1000; ++i) {
                 if (tp[i].name[0] != '\0') {
                         printf("(%s, %lu, %lu) ", tp[i].name, tp[i].n, tp[i].start);
                 }
@@ -75,7 +75,7 @@ void assigned(proc *tp) {
         return;
 }
 void find(proc *tp, char *name) {
-        for (int i = 0; i < sizeof(tp); ++i) {
+        for (int i = 0; i < 1000; ++i) {
           if (strcmp(tp[i].name, name) == 0) {
                        printf("(%s, %lu, %lu)\n", tp[i].name, tp[i].n, tp[i].start);
                        return;
