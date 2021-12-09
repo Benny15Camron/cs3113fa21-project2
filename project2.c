@@ -122,7 +122,7 @@ void addToTp(proc *tp, char *name, long unsigned int n, int j) {
                 printf("ALLOCATED %s %ld\n", tp[0].name, tp[0].start);
                 return;
         }
-        for (int i = (sizeof(tp) - 2); i >= j; --i) {
+        for (int i = 1000; i >= j; --i) {
                 if ((tp[i].name[0] != '\0') && (tp[i+1].name[0] == '\0')) {
                         strcpy(tp[i+1].name, tp[i].name);
                         tp[i+1].n = tp[i].n;
