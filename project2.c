@@ -105,7 +105,7 @@ void find(proc *tp, char *name) {
 int release(proc *tp, char *name) {
         for (int i = 0; i < allocated(tp); ++i) {
                 if (strcmp(tp[i].name, name) == 0) {
-                        printf("FREE %s %ld %ld \n", tp[i].name, tp[i].n, tp[i].start);
+                        printf("FREE vnbg %s %ld %ld\n", tp[i].name, tp[i].n, tp[i].start);
                         tp[i].name[0] = '\0';
                         tp[i].n = 0;
                         tp[i].start = 0;
