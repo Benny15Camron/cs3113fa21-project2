@@ -46,6 +46,7 @@ void available(proc *tp, long unsigned int tot) {
                 else if (remainder != 0) {
                         remainder = tot - (tp[i].start + tp[i].n);
                         if (remainder == 0) {
+                                printf("\n");
                                 break;
                         }
                         av = tp[i].start + tp[i].n;
@@ -54,6 +55,7 @@ void available(proc *tp, long unsigned int tot) {
                 }
                 av = 0;
         }
+        
         return;
 }
 void assigned(proc *tp) {
