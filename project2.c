@@ -471,7 +471,7 @@ void nextfit(char** argv, long unsigned int tot) {
                         }
                         else {
                                 if (isEmpty(tp) == 0) {
-                                        addToTP(tp, name, n, j);
+                                        addToTp(tp, name, n, j);
                                 }
                                 else {
                                 
