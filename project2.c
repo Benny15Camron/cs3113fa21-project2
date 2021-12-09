@@ -135,7 +135,7 @@ void addToTp(proc *tp, char *name, long unsigned int n, int j) {
                 printf("ALLOCATED %s %ld\n", tp[0].name, tp[0].start);
                 return;
         }
-        for (int i = allocated(tp); i >= j; --i) {
+        for (int i = allocated(tp)+ 1; i >= j; --i) {
                 if ((tp[i].name[0] != '\0') && (tp[i+1].name[0] == '\0')) {
                         strcpy(tp[i+1].name, tp[i].name);
                         tp[i+1].n = tp[i].n;
@@ -148,10 +148,7 @@ void addToTp(proc *tp, char *name, long unsigned int n, int j) {
         long unsigned int st = 0;
         strcpy(tp[j].name, name);
         tp[j].n = n;
-        if (j == 0) {
-                st = 0;
-        }
-        else {
+        if (j != 0) {
                 st = tp[j-1].start + tp[j-1].n;
         }
         tp[j].start = st;
@@ -170,10 +167,7 @@ long unsigned int findBestFit(proc *tp, char *name, long unsigned int n, long un
                 return j;
         }
         bestDiff = tp[0].start;
-        for (int i = 0; i < allocated(tp); ++i) {
-                if (tp[i].name[0] == '\0') {
-                        break;
-                }
+        for (int i = 0; i < allocated(tp) + 1; ++i) {
                 if ((tp[i].name[0] != '\0') && (tp[i+1].name[0] != '\0')) {
                         diff = tp[i+1].start - (tp[i].start + tp[i].n);
                         if ((n <= diff) && (bestDiff == 0)){
@@ -187,7 +181,7 @@ long unsigned int findBestFit(proc *tp, char *name, long unsigned int n, long un
                 }
                 else if ((tp[i].name[0] != '\0') && (tp[i+1].name[0] == '\0')) {
                         diff = tot - (tp[i].start + tp[i].n);
-                        if (((bestDiff == 0) || (diff < bestDiff)) && (diff >= n)) {
+                        if ((diff >= n)) {
                                 bestDiff = diff;
                                 j = i+1;
                         }
