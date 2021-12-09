@@ -439,6 +439,12 @@ int findNextFit(proc *tp, char *name, int pos, long unsigned int n, long unsigne
                         }
                 }
         }
+        
+        diff = tp[0].start;
+        if (diff >= n) {
+                return 0;
+        }
+        
         for (int i = 0; i <= pos; ++i) {
                 if (tp[i+1].name[0] != '\0'){
                         diff = tp[i+1].start - (tp[i].start + tp[i].n);
