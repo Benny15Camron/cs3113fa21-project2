@@ -5,7 +5,9 @@
 #include <fcntl.h>
 #include <sys/stat.h>
 #include <math.h>
+
 #define MAX_READ 10
+
 struct proc {
         char name[5];
         long unsigned int n;
@@ -424,6 +426,20 @@ int findNextFit(proc *tp, char *name, int pos, long unsigned int n, long unsigne
         long unsigned int diff = tp[0].start;
         
         for (int i = pos; i < allocated(tp) + 4; ++i) {
+                if (tp[i+1].name[0] != '\0'){
+                        diff = tp[i+1].start - (tp[i].start + tp[i].n);
+                        if (diff >= n){
+                         return (i + 1);
+                        }
+                }
+                else if (tp[i].name[0] != '\0') {
+                        diff = tot - (tp[i].start + tp[i].n);
+                        if (diff >= n) {
+                               return (i + 1);
+                        }
+                }
+        }
+        for (int i = 0; i <= pos; ++i) {
                 if (tp[i+1].name[0] != '\0'){
                         diff = tp[i+1].start - (tp[i].start + tp[i].n);
                         if (diff >= n){
