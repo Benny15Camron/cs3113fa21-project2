@@ -427,7 +427,6 @@ int findNextFit(proc *tp, char *name, int pos, long unsigned int n, long unsigne
         }
         
         for (int i = pos; i < allocated(tp) + 4; ++i) {
-                printf("name %s, name2 %s, %d\n", name, tp[0].name, i);
                 if (tp[i+1].name[0] != '\0'){
                         diff = tp[i+1].start - (tp[i].start + tp[i].n);
                         if (diff >= n){
@@ -488,6 +487,9 @@ void nextfit(char** argv, long unsigned int tot) {
                         j = release(tp, name);
                         if (j == -1){
                                 printf("FAIL RELEASE %s\n", name);
+                        }
+                        else {
+                                --pointer;
                         }
                 }
                 else if (strcmp(job, list) == 0) {
