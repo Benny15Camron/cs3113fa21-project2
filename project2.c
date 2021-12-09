@@ -58,7 +58,6 @@ void available(proc *tp, long unsigned int tot) {
                 }
                 av = 0;
         }
-        printf("%lu\n", sizeof(tp));
         return;
 }
 void assigned(proc *tp) {
@@ -78,17 +77,20 @@ void assigned(proc *tp) {
         return;
 }
 void find(proc *tp, char *name) {
-        for (int i = 0; i < sizeof(tp); ++i) {
-          if (strcmp(tp[i].name, name) == 0) {
+        for (int i = 0; i < 1000; ++i) {
+                if (strcmp(tp[i].name, name) == 0) {
                        printf("(%s, %lu, %lu)\n", tp[i].name, tp[i].n, tp[i].start);
                        return;
                 }
+                else if(tp[i].name[0] == '\0') {
+                        break;
+                }                
         }
         printf("FAULT\n");
         return;
 }
 int release(proc *tp, char *name) {
-        for (int i = 0; i < sizeof(tp); ++i) {
+        for (int i = 0; i < 1000; ++i) {
                 if (strcmp(tp[i].name, name) == 0) {
                         printf("FREE %s %ld %ld\n", tp[i].name, tp[i].n, tp[i].start);
                         tp[i].name[0] = '\0';
@@ -103,6 +105,9 @@ int release(proc *tp, char *name) {
                                 tp[j+1].start = 0;
                         }
                         return  1;
+                }
+                else if(tp[0].name[0] == '\0') {
+                        break;
                 }
         }
         return -1;
