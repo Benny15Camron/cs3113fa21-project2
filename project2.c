@@ -152,6 +152,9 @@ void addToTp(proc *tp, char *name, long unsigned int n, int j) {
                 st = tp[j-1].start + tp[j-1].n;
         }
         tp[j].start = st;
+        if (strcmp(tp[j].name, "S") == 0){
+                printf("ALLOCATED lskjdf %s %ld\n", tp[j].name, tp[j].start);
+        }
         printf("ALLOCATED %s %ld\n", tp[j].name, tp[j].start);
         return;
 }
