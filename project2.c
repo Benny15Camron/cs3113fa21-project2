@@ -24,7 +24,7 @@ void available(proc *tp, long unsigned int tot) {
         long unsigned int remainder = tot;
         long unsigned int st = 0;
         if (isEmpty(tp) == 0) {
-                printf("(%lu,0)\n", tot);
+                printf("(%lu, 0)\n", tot);
                 return;
         }
         for (int i = 0; i < sizeof(tp); ++i) {
@@ -40,7 +40,7 @@ void available(proc *tp, long unsigned int tot) {
                         av =  tp[i+1].start - (tp[i].start + tp[i].n);
                         if (av != 0){
                                 st = tp[i].start + tp[i].n;
-                                printf("(%lu, %lu)", av, st);
+                                printf("(%lu, %lu) ", av, st);
                         }
                   }
                 else if (remainder != 0) {
@@ -69,7 +69,7 @@ void assigned(proc *tp) {
 void find(proc *tp, char *name) {
         for (int i = 0; i < sizeof(tp); ++i) {
           if (strcmp(tp[i].name, name) == 0) {
-                       printf("(%s,%lu,%lu)\n", tp[i].name, tp[i].n, tp[i].start);
+                       printf("(%s, %lu, %lu)\n", tp[i].name, tp[i].n, tp[i].start);
                        return;
                 }
         }
