@@ -28,9 +28,9 @@ void available(proc *tp, long unsigned int tot) {
                 return;
         }
         for (int i = 0; i < sizeof(tp); ++i) {
-                remainder += tp[i].n;
+                remainder -= tp[i].n;
         }
-        remainder -= tot;
+        
         if (remainder == 0) {
                 printf("FULL\n");
                 return;
