@@ -334,11 +334,14 @@ void worstfit(char** argv, long unsigned int tot) {
         }
 }
 int findFirstFit(proc *tp, char *name, long unsigned int n, long unsigned int tot){
+        if (n > tot) {
+                return -1;
+        }
         if (isEmpty(tp) == 0) {
                 return 0;
         }
         long unsigned int diff = 0;
-        for (int i = 0; i < sizeof(tp); ++i) {
+        for (int i = 0; i < allocated(tp + 1; ++i) {
                 if (tp[i+1].name[0] != '\0'){
                         diff = tp[i+1].start - (tp[i].start + tp[i].n);
                         if (diff > n){
