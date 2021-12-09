@@ -485,9 +485,6 @@ void nextfit(char** argv, long unsigned int tot) {
                         if (j == -1){
                                 printf("FAIL RELEASE %s\n", name);
                         }
-                        else {
-                                pointer = j;
-                        }
                 }
                 else if (strcmp(job, list) == 0) {
                         fscanf(fd, "%s", job);
