@@ -340,7 +340,7 @@ int findFirstFit(proc *tp, char *name, long unsigned int n, long unsigned int to
         if (isEmpty(tp) == 0) {
                 return 0;
         }
-        long unsigned int diff = 0;
+        long unsigned int diff = tp[0].start;
         for (int i = 0; i < allocated(tp) + 1; ++i) {
                 if (tp[i+1].name[0] != '\0'){
                         diff = tp[i+1].start - (tp[i].start + tp[i].n);
