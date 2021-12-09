@@ -35,7 +35,7 @@ void available(proc *tp, long unsigned int tot) {
                 printf("FULL\n");
                 return;
         }
-        for  (int i = 0; i < sizeof(tp); ++i) {
+        for  (int i = 0; i < (sizeof(tp) - 1); ++i) {
                 if (tp[i+1].name[0] != '\0'){
                         av =  tp[i+1].start - (tp[i].start + tp[i].n);
                         if (av != 0){
@@ -43,7 +43,7 @@ void available(proc *tp, long unsigned int tot) {
                                 printf("(%lu, %lu) ", av, st);
                         }
                   }
-                else if (remainder != 0) {
+                else if (tp[i].name[0] != '\0') {
                         remainder = tot - (tp[i].start + tp[i].n);
                         if (remainder == 0) {
                                 printf("\n");
