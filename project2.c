@@ -55,7 +55,7 @@ void available(proc *tp, long unsigned int tot) {
 }
 void assigned(proc *tp) {
         if (isEmpty(tp) == 0) {
-                printf("NONE");
+                printf("NONE\n");
                 return;
         }
         for (int i = 0; i < sizeof(tp); ++i) {
