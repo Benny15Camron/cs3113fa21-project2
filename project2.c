@@ -348,13 +348,13 @@ int findFirstFit(proc *tp, char *name, long unsigned int n, long unsigned int to
                 if (tp[i+1].name[0] != '\0'){
                         diff = tp[i+1].start - (tp[i].start + tp[i].n);
                         if (diff > n){
-                         return i + 1;
+                         return (i + 1);
                         }
                 }
                 else {
                         diff = tot - (tp[i].start + tp[i].n);
                         if (diff > n) {
-                                return i + 1;
+                                return (i + 1);
                         }
                 }
         }
