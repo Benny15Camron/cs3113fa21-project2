@@ -207,16 +207,28 @@ void bestfit(char** argv, long unsigned int tot) {
                 }
                 else if (strcmp(job, rlease) == 0) {
                         fscanf(fd, "%s", name);
+                        if (tot == 128) {
+                                printf("%s %s\n", job, name);
+                        }
                         if (release(tp, name) == -1){
                                 printf("FAIL RELEASE %s\n", name);
                         }
                 }
                 else if (strcmp(job, list) == 0) {
                         fscanf(fd, "%s", job);
+                        if (tot == 128) {
+                                printf("%s\n", job,);
+                        }
                         if (strcmp(job, av) == 0) {
+                                if (tot == 128) {
+                                        printf("%s\n", job);
+                                }
                                 available(tp, tot);
                         }
                         else if (strcmp(job, as) == 0) {
+                                if (tot == 128) {
+                                        printf("%s\n", job);
+                                }
                                 assigned(tp);
                         }
                 }
