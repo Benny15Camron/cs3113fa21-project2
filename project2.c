@@ -134,7 +134,7 @@ long unsigned int findBestFit(proc *tp, char *name, long unsigned int n, long un
         int j = 0;
         long unsigned int diff = 0;
         long unsigned int bestDiff = 0;
-        if (n < tot) {
+        if (n > tot) {
                 return -1;
         }
         if (isEmpty(tp) == 0) {
