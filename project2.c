@@ -152,7 +152,10 @@ long unsigned int findBestFit(proc *tp, char *name, long unsigned int n, long un
                 return j;
         }
         bestDiff = tp[0].start;
-        for (int i = 0; i < sizeof(tp); ++i) {
+        for (int i = 0; i < 1000; ++i) {
+                if (tp[i].name[0] == '\0') {
+                        break;
+                }
                 if ((tp[i].name[0] != '\0') && (tp[i+1].name[0] != '\0')) {
                         diff = tp[i+1].start - (tp[i].start + tp[i].n);
                         if ((n <= diff) && (bestDiff == 0)){
