@@ -248,13 +248,15 @@ long unsigned int findWorstFit(proc *tp, char *name, long unsigned int n, long u
         int j = 0;
         long unsigned int diff = 0;
         long unsigned int worstDiff = 0;
+        
+        if (n > tot) {
+                return -1;
+        }
+        
         if (isEmpty(tp) == 0) {
                 return j;
         }
-        if (n > tot) {
-                printf("here\n");
-                return -1;
-        }
+
         worstDiff = tp[0].start;
         for (int i = 0; i < allocated(tp) + 1; ++i) {
                 if ((tp[i].name[0] != '\0') && (tp[i+1].name[0] != '\0')) {
