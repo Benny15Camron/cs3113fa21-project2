@@ -18,15 +18,7 @@ int isEmpty(proc *tp) {
         }
         return 0;
 }
-long unsigned int allocated(proc *tp) {
-        long unsigned int ans = 0;
-        for (int i = 0; i < sizeof(tp); ++i) {
-                if (tp[i].name[0] != '\0') {
-                        ans += tp[i].n;
-                }
- }
-        return ans;
-}
+
 void available(proc *tp, long unsigned int tot) {
         long unsigned int av = 0;
         long unsigned int remainder = tot;
@@ -160,7 +152,7 @@ tot) {
                         }
                 }
                 else if ((tp[i].name[0] != '\0') && (tp[i+1].name[0] == '\0')) {
-                        diff = tot - allocated(tp);
+                        diff = tot - (tp[i].start + tp[i].n);
                         if ((bestDiff == 0) || (diff < bestDiff)) {
                                 bestDiff = diff;
                                 j = i+1;
@@ -243,7 +235,7 @@ long unsigned int findWorstFit(proc *tp, char *name, long unsigned int n, long u
                         }
                 }
                 else if ((tp[i].name[0] != '\0') && (tp[i+1].name[0] == '\0')) {
-                        diff = tot - allocated(tp);
+                        diff = tot - (tp[i].start + tp[i].n);
                         if ((worstDiff == 0) || (diff > worstDiff)) {
                                 worstDiff = diff;
                                 j = i+1;
