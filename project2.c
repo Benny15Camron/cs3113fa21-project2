@@ -217,7 +217,7 @@ void bestfit(char** argv, long unsigned int tot) {
                 else if (strcmp(job, list) == 0) {
                         fscanf(fd, "%s", job);
                         if (tot == 128) {
-                                printf("%s\n", job);
+                                printf("%s ", job);
                         }
                         if (strcmp(job, av) == 0) {
                                 if (tot == 128) {
