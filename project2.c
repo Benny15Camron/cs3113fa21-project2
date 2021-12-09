@@ -375,6 +375,8 @@ void firstfit(char** argv, long unsigned int tot) {
         proc tp[20];
         for (int i = 0; i < 20; ++i){
                 tp[i].name[0] = '\0';
+                tp[i].n = 0;
+                tp[i].start = 0;
         }
         fd = fopen(argv[3], "r");
         while (fscanf(fd, "%s", job) != EOF) {
