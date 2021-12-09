@@ -21,17 +21,17 @@ int isEmpty(proc *tp) {
 
 void available(proc *tp, long unsigned int tot) {
         long unsigned int av = 0;
-        long unsigned int remainder = tot;
+        long unsigned int remainder = 0;
         long unsigned int st = 0;
         if (isEmpty(tp) == 0) {
                 printf("(%lu, 0)\n", tot);
                 return;
         }
         for (int i = 0; i < sizeof(tp); ++i) {
-                remainder -= tp[i].n;
+                remainder += tp[i].n;
         }
         
-        if (remainder == 0) {
+        if ((remainder - tot) == 0) {
                 printf("FULL\n");
                 return;
         }
