@@ -117,7 +117,7 @@ int release(proc *tp, char *name) {
                                 tp[j+1].n = 0;
                                 tp[j+1].start = 0;
                         }
-                        return  1;
+                        return  i;
                 }
                 else if(tp[0].name[0] == '\0') {
                         break;
@@ -479,9 +479,11 @@ void nextfit(char** argv, long unsigned int tot) {
                 }
                 else if (strcmp(job, rlease) == 0) {
                         fscanf(fd, "%s", name);
-                        if (release(tp, name) == -1){
+                        j = release(tp, name);
+                        if (j == -1){
                                 printf("FAIL RELEASE %s\n", name);
                         }
+                        pointer = j;
                 }
                 else if (strcmp(job, list) == 0) {
                         fscanf(fd, "%s", job);
