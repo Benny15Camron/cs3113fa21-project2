@@ -464,6 +464,9 @@ int main (int argc, char** argv) {
         long int N;
         strcpy(fit, argv[1]);
         N =  atoi(argv[2]);
+        proc *alloc;
+        alloc = calloc(N, sizeof(proc));
+        free(alloc);
         if (strcmp(fit, bf) == 0) {
                 bestfit(argv, N);
         }
